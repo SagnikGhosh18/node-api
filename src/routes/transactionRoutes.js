@@ -3,6 +3,9 @@ const { getTransactionsByUserId, getTransactionsWithUserDetails } = require('../
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.status(200).json('Welcome, Transaction Route is working well');
+});
 router.get('/user/:userId', getTransactionsByUserId);
 router.get('/details', getTransactionsWithUserDetails);
 
