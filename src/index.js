@@ -16,7 +16,7 @@ app.use('/transactions', transactionRoutes);
 
 const startServer = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI || '');
+        await mongoose.connect(process.env.MONGODB_URI || '');
         console.log('Connected to MongoDB');
 
         app.listen(PORT, () => {
