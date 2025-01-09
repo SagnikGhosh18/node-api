@@ -6,6 +6,8 @@ const transactionRoutes = require('./src/routes/transactionRoutes');
 
 dotenv.config();
 
+
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -27,11 +29,13 @@ const connectToDB = async () => {
     }
 };
 
+connectToDB();
 
-app.get('/db', async (req, res) => {
-    const result = await connectToDB();
-    res.status(200).json(result);
-});
+
+// app.get('/db', async (req, res) => {
+//     // const result = await connectToDB();
+//     res.status(200).json(result);
+// });
 
 app.listen(PORT, async () => {
     // await connectToDB();
