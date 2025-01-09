@@ -18,8 +18,23 @@ app.get('/', (req, res) => {
     res.status(200).json('Welcome, your app is working well');
 });
 
+const connectToDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGODB_URI || '');
+        return 'Connected to MongoDB';
+    } catch (error) {
+        return error;
+    }
+};
+
+
+app.get('/db', async (req, res) => {
+    const res = await connectToDB();
+    res.status(200).json(res);
+});
+
 app.listen(PORT, async () => {
-    await mongoose.connect(process.env.MONGO_URI || '');
+    // await connectToDB();
     console.log('Connected to MongoDB');
     console.log(`Server running at http://localhost:${PORT}`);
 });
