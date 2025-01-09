@@ -29,8 +29,8 @@ const connectToDB = async () => {
 
 
 app.get('/db', async (req, res) => {
-    const res = await connectToDB();
-    res.status(200).json(res);
+    const result = await connectToDB();
+    res.status(200).json(result);
 });
 
 app.listen(PORT, async () => {
